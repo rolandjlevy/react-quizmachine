@@ -73,6 +73,8 @@ See [https://opentdb.com/api\_config.php](https://opentdb.com/api_config.php) fo
 
 ## Redux getting started guide
 
+![](/redux.png)
+
 If you are using planning to use Redux, use the steps below to help you get started.
 
 - Create a React `Question` component that will display a question to the user. It will receive 2 props from container.
