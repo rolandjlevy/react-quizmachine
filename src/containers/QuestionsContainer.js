@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import Questions from '../components/Questions.js';
 import { fetchQuestionFromAPI, updateScore } from '../actions';
 
-// call questionsOutput from questionsOutput reducer
+// call questionsReceivedReducer
 const mapStateToProps = state => {
     console.log(`Calling mapStateToProps from QuestionContainer`, state)
     return {
-        questions: state.questionsOutput
+        questions: state.questionsReceivedReducer
     }
 }
 

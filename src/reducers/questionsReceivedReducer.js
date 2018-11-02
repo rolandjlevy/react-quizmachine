@@ -1,4 +1,4 @@
-function questionsOutput(state = [], action){
+function questionsReceivedReducer(state = [], action){
   // console.log(`Step 5 - setting question in state`);
   switch (action.type) {
     case 'RECEIVE_QUESTIONS':
@@ -8,4 +8,4 @@ function questionsOutput(state = [], action){
   }
 }
 
-export default questionsOutput;
+export default questionsReceivedReducer;
