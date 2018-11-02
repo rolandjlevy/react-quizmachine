@@ -1,17 +1,18 @@
 import React from 'react';
-import QandA from './QandA';
+// import QandA from './QandA';
+import QuestionsContainer from './QuestionsContainer';
 
 class App extends React.Component {
-constructor(){
-  super();
-  this.fetchQuiz = this.fetchQuiz.bind(this)
-  this.displayQuestions = this.displayQuestions.bind(this)
-  this.randomizeAnswers = this.randomizeAnswers.bind(this)
+// constructor(){
+//   super();
+//   this.fetchQuiz = this.fetchQuiz.bind(this)
+//   this.displayQuestions = this.displayQuestions.bind(this)
+//   this.randomizeAnswers = this.randomizeAnswers.bind(this)
 
-  this.state = {
-    content: null
-  }
-}
+//   this.state = {
+//     content: null
+//   }
+// }
 
   componentDidMount() {
     this.fetchQuiz();
@@ -59,13 +60,11 @@ constructor(){
 
   render(){
     return (
-      <div>
-        { this.state.content &&
-        <QandA 
-          content = {this.state.content} 
-        />
-        }
-      </div>
+      <main>
+        <h1>Quiz questions</h1>
+        <QuestionsContainer />
+        {/* <QandA content = {this.state.content} /> */}
+      </main>
     )
   }
 }
