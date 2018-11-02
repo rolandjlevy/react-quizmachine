@@ -16,7 +16,6 @@ class Questions extends React.Component {
                 return <Question 
                             question={this.props.questions[id]}
                             updateScore={this.props.updateScore}
-                            id={id}
                             key={id}
                         />
             })}
