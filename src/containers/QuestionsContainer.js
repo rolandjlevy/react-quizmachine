@@ -1,13 +1,25 @@
 import { connect } from 'react-redux';
-import Questions.js from '../components/Questions.js'
-import {  } from '../actions';
+import Questions from '../components/Questions.js';
+import { fetchQuestionFromAPI, updateScore } from '../actions';
 
-function mapStateToProps(state) {
+// call questionsOutput from questionsOutput reducer
+const mapStateToProps = state => {
+    console.log(`Step 6 - calling mapStateToProps in QuestionContainer`, state)
     return {
-        questions: state.questions
+        questions: state.questionsOutput
+    }
+}
+
+// receives fetchQuestionFromAPI() from Question.js component
+const mapDispatchToProps = dispatch => {
+    console.log(`Step 2: getting action creator`);
+    return {
+        fetchQuestionFromAPI: () => dispatch(fetchQuestionFromAPI()),
+        updateScore: (id, result) => dispatch(updateScore(id, result))
     }
 }
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Questions)

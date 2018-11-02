@@ -1,22 +1,30 @@
 import React from 'react';
+import Question from './Question';
 
-function QandA({content}) {
- const idKeys = Object.keys(content);
-    return (
-      <div>
-          {idKeys.map(id => {
-              const itemKeys = Object.keys(content[id]);
-              itemKeys.map(key =>{
-                  if (key === "question") {
-                    console.log(id, "question: ", content[id]["question"]);
-                  } else if (key === "all_answers") {
-                    console.log(id, "all_answers: ", content[id]["all_answers"]);
-                  }
-              })
-          })}
-      </div>
-    )
-  
+class Questions extends React.Component {
+
+    componentDidMount () {
+        // this.props.fetchQuestionFromAPI() received from container: mapDispatchToProps
+        this.props.fetchQuestionFromAPI(); 
+        console.log(`Step 1: calling fetchQuestionFromAPI`);
+    }
+
+    render () {
+        // this.props.questions received from container: mapStateToProps
+        const idKeys = Object.keys(this.props.questions); 
+        return (
+        <div>
+            {idKeys.map(id => {
+                return <Question 
+                            question={this.props.questions[id]}
+                            updateScore={this.props.updateScore}
+                            id={id}
+                            key={id}
+                        />
+            })}
+        </div>
+        )
+    }
 }
 
-export default QandA;
+export default Questions;
