@@ -6,17 +6,6 @@ function Question ({ question, id, updateScore }) {
         event.preventDefault();
     }
 
-    function selectAnswer(event, id) {
-        event.preventDefault();
-        if (event.target.id === 'correct') {
-            // console.log(`Question ${id} is correct`);
-            updateScore(id, 'correct');
-        } else {
-            // console.log(`Question ${id} is incorrect`);
-            updateScore(id, 'incorrect');
-        }
-    }
-
     return (
         <form onSubmit={handleSubmit}>
             <h2>Question {question.id}</h2>
@@ -26,8 +15,10 @@ function Question ({ question, id, updateScore }) {
                     {  question.all_answers.map((answer, index) => {
                         return (<li key={answer.text}>
                                     <div 
-                                        onClick={(event, id) => selectAnswer(event, question.id)} 
-                                        id={answer.type}
+                                        onClick={(event) => {
+                                            event.preventDefault();
+                                            updateScore(question.id, answer.type);
+                                        }}
                                         className="answers__option"
                                     >{answer.text}</div>
                                 </li>)
