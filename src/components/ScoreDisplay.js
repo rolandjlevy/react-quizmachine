@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ScoreDisplay ({ display }) {
+function ScoreDisplay ({ displayScore, display }) {
     return (
-        <div>
-            Score: {display.display}
+        <div className="display">
+            {/* Score: {displayScore(display)} */}
         </div>
     )
 }

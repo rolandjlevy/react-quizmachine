@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import Pagination from '../components/Pagination.js';
-import { nextQuestion } from '../actions';
+import { nextQuestion, displayScore } from '../actions';
 
 // call nextQuestionReducer
 const mapStateToProps = state => {
-    // console.log('mapStateToProps: ', state)
+    console.log("nextQuestion > ", state)
     return {
         currentQuestion: state.nextQuestionReducer
     }

@@ -4,7 +4,7 @@ import { displayScore } from '../actions';
 
 // call scoreDisplayedReducer
 const mapStateToProps = state => {
-    // console.log('mapStateToProps: ', state)
+    // console.log(`ScoreDisplayContainer > mapStateToProps: `, state)
     return {
         display: state.scoreDisplayedReducer
     }
@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 // dispatch actions to reducers
 const mapDispatchToProps = dispatch => {
     return {
-        displayScore: () => dispatch(displayScore())    
+        displayScore: (content) => dispatch(displayScore(content))
     }
 }
 

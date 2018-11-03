@@ -4,7 +4,7 @@ function scoreDisplayedReducer (state = {
     switch (action.type) {
         case 'DISPLAY_SCORE':
             return Object.assign({}, state, { 
-                display: `Question ${state.currentQuestion}`
+                display: `Question ${action.display}`
             }) 
         default:
             return state

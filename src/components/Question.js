@@ -12,7 +12,6 @@ function Question ({ question, updateScore }) {
                     {  question.all_answers.map((answer) => {
                         const decodedAnswer = decode(answer.text);
                         // strange that decodedAnswer isn't recognised in updateScore()
-                        // console.log("========= FROM component: ", {answer}, answer, decodedAnswer, answer.text)
                         return (<li key={answer.text}>
                                     <div 
                                         onClick={(event) => {

@@ -1,6 +1,7 @@
-export function displayScore () {
+export function displayScore (display) {
   return {
-    type: 'DISPLAY_SCORE'
+    type: 'DISPLAY_SCORE',
+    display
   }
 }
 
