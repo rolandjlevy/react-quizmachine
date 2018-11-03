@@ -22,7 +22,9 @@ class Question extends React.Component {
                 <div>
                     <ul>
                     Answers: {questionObject.answersArray.map(item => {
-                        return <li key={item}>{item}</li>
+                        return  <li key={item}>
+                                    {item}
+                                </li>
                     })}
                     </ul>
                 </div>
