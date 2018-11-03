@@ -1,32 +1,41 @@
 import React from 'react';
-import { decode } from 'he';
+import { decode } from "he";
 
-function Question ({ question, updateScore }) {
-    const questionDecoded = decode(question.question);
-    return (
-        <form>
-            <h2>Question {question.id}</h2>
-            <p>{questionDecoded}</p>
-            <h3>Answers</h3>
+class Question extends React.Component { 
+    constructor() {
+        super()
+    }
+
+    componentDidMount () {
+        // console.log(`Step 1: calling fetchQuestion`);
+        this.props.fetchQuestion();
+    }
+
+    render () {
+        const questionObject = this.props.question;
+        return (
+            !!questionObject &&
+            (<article>
+                <div>
+                    Question: {decode(questionObject.question)}
+                </div>
                 <ul className="answers">
-                    {  question.all_answers.map((answer) => {
-                        const decodedAnswer = decode(answer.text);
-                        // strange that decodedAnswer isn't recognised in updateScore()
-                        return (<li key={answer.text}>
-                                    <div 
-                                        onClick={(event) => {
-                                            event.preventDefault();
-                                            updateScore(question.id, decodedAnswer, answer.type);
-                                        }}
-                                        className="answers__option"
-                                    >{decodedAnswer}</div>                            
-                                </li>)
-                        })
-                    }
+                    Answers: {questionObject.answersArray.map(answer => {
+                        return  <li 
+                                    className="answers__option" 
+                                    key={answer}
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        this.props.receiveAnswer(answer, questionObject);
+                                    }}
+                                >
+                                    {decode(answer)}
+                                </li>
+                    })}
                 </ul>
-                <hr />
-        </form>
-    )
+            </article>) || null
+        )
+    }
 }
 
 export default Question;

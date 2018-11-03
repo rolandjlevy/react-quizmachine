@@ -1,59 +1,44 @@
-export function displayScore (display) {
-  return {
-    type: 'DISPLAY_SCORE',
-    display
-  }
+export function fetchQuestion() {
+  // console.log(`Step 3: calling fetch`)
+  return function(dispatch) {
+    fetch(`https://opentdb.com/api.php?amount=1&type=multiple`)
+      .then(response => response.json())
+      .then(result => {
+        dispatch(receiveQuestion(result.results[0]));
+      })
+      .catch(error => console.log(error));
+  };
 }
 
-export function nextQuestion () {
+export function receiveQuestion(question) {
+  // console.log(`Step 4 - creating RECEIVE_QUESTION`, question.answersArray)
+  question.answersArray = shuffle(
+    [...question.incorrect_answers, question.correct_answer]
+  ); 
+  return {
+    type: "RECEIVE_QUESTION",
+    question
+  };
+}
+
+function shuffle(answers) {
+  return answers
+  .map(a => ({key: Math.random(), value: a}))
+  .sort((a, b) => a.key - b.key)
+  .map(a => a.value); 
+}
+
+export function receiveAnswer(answer, question) {
+  const answerType = (answer === question.correct_answer) ? 'CORRECT_ANSWER' : 'INCORRECT_ANSWER';
+  return {
+    type: answerType,
+    answer,
+    question
+  };
+}
+
+export function nextQuestion() {
   return {
     type: 'NEXT_QUESTION'
-  }
-}
-
-export function fetchQuestionFromAPI() {
-  return function(dispatch, getState) {
-    const api = "https://opentdb.com/api.php?amount=10&category=11&type=multiple";
-    fetch(api)
-    .then(response => response.json())
-    .then(body => {
-        // console.log(`Step 3: body: ${body}`);
-        dispatch(receiveQuestions(body.results))
-    });
-  }
-}
-
-export function receiveQuestions(questionsArray) {
-  return {
-      type: 'RECEIVE_QUESTIONS',
-      questions: displayQuestions(questionsArray)
-  }
-}
-
-export function updateScore(id, answer, result) {
-  const updateResult = (result === 'correct') ? 'INCREASE_SCORE' : 'DECREASE_SCORE'
-    return {
-      type: updateResult,
-      id,
-      answer,
-      result
-    }
-}
-
-function displayQuestions(questionsArray) {
-  let obj = {};
-  questionsArray.map((quizObject, index) => {
-    obj[index+1] = {id: index+1}
-    Object.keys(quizObject).forEach(key => obj[index+1][key] = quizObject[key]);
-    obj[index+1]["all_answers"] = [{text: obj[index+1].correct_answer, type: "correct"}]
-    obj[index+1].incorrect_answers.forEach(item => {
-      obj[index+1]["all_answers"].push({text: item, type: "incorrect"})
-    })
-    obj[index+1]["all_answers"] = randomizeAnswers((obj[index+1]["all_answers"]));
-  })
-  return obj;
-}
-
-function randomizeAnswers(answers) {
-  return answers.map(a => ({key: Math.random(), value: a})).sort((a, b) => a.key - b.key).map(a => a.value); 
+  };
 }
