@@ -6,7 +6,7 @@ function Pagination ({ nextQuestion }) {
             event.preventDefault();
             nextQuestion();
         }}>
-            Next &raquo;
+        Next question &raquo;
         </button>
     )
 }

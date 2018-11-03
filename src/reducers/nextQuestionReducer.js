@@ -3,11 +3,11 @@ function nextQuestionReducer (state = {
 }, action) {
     switch (action.type) {
         case 'NEXT_QUESTION':
-        return Object.assign({}, state, {
-            currentQuestion: state.currentQuestion + 1
-        });
-    default:
-        return state;
+            return Object.assign({}, state, {
+                currentQuestion: state.currentQuestion + 1
+            });
+        default:
+            return state;
     }
 }
 

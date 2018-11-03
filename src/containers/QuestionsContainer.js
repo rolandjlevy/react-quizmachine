@@ -12,7 +12,6 @@ const mapStateToProps = state => {
 
 // receives fetchQuestionFromAPI() from Question.js component
 const mapDispatchToProps = dispatch => {
-    // console.log(`Step 2: getting action creator`);
     // dispatch actions to reducers
     return {
         fetchQuestionFromAPI: () => dispatch(fetchQuestionFromAPI()),

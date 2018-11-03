@@ -1,23 +1,29 @@
 import { connect } from 'react-redux';
-import Pagination from '../components/Pagination.js';
-import { nextQuestion } from '../actions';
+import ScoreDisplay from '../components/ScoreDisplay.js';
+import { displayScore } from '../actions';
 
-// call nextQuestionReducer
+// call scoreDisplayedReducer
 const mapStateToProps = state => {
     // console.log('mapStateToProps: ', state)
     return {
-        currentQuestion: state.nextQuestionReducer
+        display: state.scoreDisplayedReducer
     }
 }
 
 // dispatch actions to reducers
 const mapDispatchToProps = dispatch => {
     return {
-        nextQuestion: () => dispatch(nextQuestion())
+        displayScore: () => dispatch(displayScore())    
     }
 }
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Pagination)
+)(ScoreDisplay)
+
+
+
+
+
+

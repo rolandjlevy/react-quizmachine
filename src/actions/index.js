@@ -1,3 +1,9 @@
+export function displayScore () {
+  return {
+    type: 'DISPLAY_SCORE'
+  }
+}
+
 export function nextQuestion () {
   return {
     type: 'NEXT_QUESTION'
