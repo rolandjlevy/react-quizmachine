@@ -18,11 +18,13 @@ export function receiveQuestions(questionsArray) {
   }
 }
 
-export function updateScore(id, result) {
+export function updateScore(id, answer, result) {
   const updateResult = (result === 'correct') ? 'INCREASE_SCORE' : 'DECREASE_SCORE'
     return {
       type: updateResult,
-      id
+      id,
+      answer,
+      result
     }
 }
 

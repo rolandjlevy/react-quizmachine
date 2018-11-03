@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => {
     // console.log(`Step 2: getting action creator`);
     return {
         fetchQuestionFromAPI: () => dispatch(fetchQuestionFromAPI()),
-        updateScore: (id, result) => dispatch(updateScore(id, result))
+        updateScore: (id, answer, result) => dispatch(updateScore(id, answer, result))
     }
 }
 
