@@ -10,13 +10,11 @@ export function fetchQuestion() {
   };
 }
 
-
 export function receiveQuestion(question) {
-  console.log(`Step 4 - creating RECEIVE_QUESTION`)
-  console.log({question})
-  // question.answersArray = shuffle(
-  //   question.incorrect_answers.concat(question.correct_answer)
-  // );
+  question.answersArray = shuffle(
+    [...question.incorrect_answers, question.correct_answer]
+  ); 
+  console.log(`Step 4 - creating RECEIVE_QUESTION`, question.answersArray)
   return {
     type: "RECEIVE_QUESTION",
     question
@@ -24,6 +22,9 @@ export function receiveQuestion(question) {
 }
 
 function shuffle(answers) {
-  return answers.map(a => ({key: Math.random(), value: a})).sort((a, b) => a.key - b.key).map(a => a.value); 
+  return answers
+  .map(a => ({key: Math.random(), value: a}))
+  .sort((a, b) => a.key - b.key)
+  .map(a => a.value); 
 }
 

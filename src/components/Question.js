@@ -19,6 +19,13 @@ class Question extends React.Component {
                 <div>
                     Question: {questionObject.question}
                 </div>
+                <div>
+                    <ul>
+                    Answers: {questionObject.answersArray.map(item => {
+                        return <li key={item}>{item}</li>
+                    })}
+                    </ul>
+                </div>
             </article>)
         )
     }
