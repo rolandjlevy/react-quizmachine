@@ -36,9 +36,3 @@ export function receiveAnswer(answer, question) {
     question
   };
 }
-
-export function displayScore () {
-  return {
-    
-  }
-}
