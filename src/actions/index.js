@@ -1,3 +1,9 @@
+export function nextQuestion () {
+  return {
+    type: 'NEXT_QUESTION'
+  }
+}
+
 export function fetchQuestionFromAPI() {
   return function(dispatch, getState) {
     const api = "https://opentdb.com/api.php?amount=10&category=11&type=multiple";
@@ -11,7 +17,6 @@ export function fetchQuestionFromAPI() {
 }
 
 export function receiveQuestions(questionsArray) {
-  // creating RECEIVE_QUESTION question object
   return {
       type: 'RECEIVE_QUESTIONS',
       questions: displayQuestions(questionsArray)

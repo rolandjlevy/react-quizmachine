@@ -4,7 +4,7 @@ import { fetchQuestionFromAPI, updateScore } from '../actions';
 
 // call questionsReceivedReducer
 const mapStateToProps = state => {
-    console.log(`Calling mapStateToProps from QuestionContainer`, state)
+    console.log(`QuestionContainer > mapStateToProps: `, state)
     return {
         questions: state.questionsReceivedReducer
     }
@@ -13,6 +13,7 @@ const mapStateToProps = state => {
 // receives fetchQuestionFromAPI() from Question.js component
 const mapDispatchToProps = dispatch => {
     // console.log(`Step 2: getting action creator`);
+    // dispatch actions to reducers
     return {
         fetchQuestionFromAPI: () => dispatch(fetchQuestionFromAPI()),
         updateScore: (id, answer, result) => dispatch(updateScore(id, answer, result))
