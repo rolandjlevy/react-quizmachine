@@ -1,5 +1,5 @@
 import React from 'react';
-// import { decode } from "he";
+import { decode } from "he";
 
 class Question extends React.Component { 
     constructor() {
@@ -17,17 +17,22 @@ class Question extends React.Component {
             !!questionObject &&
             (<article>
                 <div>
-                    Question: {questionObject.question}
+                    Question: {decode(questionObject.question)}
                 </div>
-                <div>
-                    <ul>
-                    Answers: {questionObject.answersArray.map(item => {
-                        return  <li key={item}>
-                                    {item}
+                <ul className="answers">
+                    Answers: {questionObject.answersArray.map(answer => {
+                        return  <li 
+                                    className="answers__option" 
+                                    key={answer}
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        this.props.receiveAnswer(answer, questionObject);
+                                    }}
+                                >
+                                    {decode(answer)}
                                 </li>
                     })}
-                    </ul>
-                </div>
+                </ul>
             </article>)
         )
     }
