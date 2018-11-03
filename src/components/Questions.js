@@ -6,11 +6,12 @@ class Questions extends React.Component {
     componentDidMount () {
         // calling this.props.fetchQuestionFromAPI() received from container: mapDispatchToProps
         this.props.fetchQuestionFromAPI(); 
+        console.log("componentDidMount: ", this.props.questions);
     }
 
     render () {
         // this.props.questions received from container: mapStateToProps
-        return (
+        return (this.props.questions &&
         <div>
             {Object.keys(this.props.questions).map(id => {
                 return <Question 
