@@ -1,6 +1,7 @@
 import React from 'react';
-import QuestionContainer from '../containers/QuestionContainer'
-import ScoreContainer from '../containers/ScoreContainer'
+import QuestionContainer from '../containers/QuestionContainer';
+import ScoreContainer from '../containers/ScoreContainer';
+import NextContainer from '../containers/NextContainer';
 import "../styles/App.scss";
 
 class App extends React.Component {
@@ -10,6 +11,7 @@ class App extends React.Component {
         <h1>Quiz questions</h1>
         <QuestionContainer />
         <ScoreContainer />
+        <NextContainer />
       </main>
     )
   }

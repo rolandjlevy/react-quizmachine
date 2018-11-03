@@ -33,7 +33,7 @@ class Question extends React.Component {
                                 </li>
                     })}
                 </ul>
-            </article>)
+            </article>) || null
         )
     }
 }

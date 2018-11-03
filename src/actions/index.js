@@ -36,3 +36,9 @@ export function receiveAnswer(answer, question) {
     question
   };
 }
+
+export function nextQuestion() {
+  return {
+    type: 'NEXT_QUESTION'
+  };
+}
