@@ -1,7 +1,7 @@
-export function fetchQuestion(category) {
+export function fetchQuestion(difficulty) {
   // console.log(`Step 3: calling fetch`)
   return function(dispatch) {
-    const url = `https://opentdb.com/api.php?amount=1&difficulty=${category}&type=multiple`;
+    const url = `https://opentdb.com/api.php?amount=1&difficulty=${difficulty}&type=multiple`;
     console.log(url);
     fetch(url)
       .then(response => response.json())
@@ -52,10 +52,10 @@ export function startTimer(max) {
   };
 }
 
-export function setCategory(category) {
+export function setDifficulty(difficulty) {
   return{
       type: "SET_CATEGORY",
-      category
+      difficulty
   }
 }
 

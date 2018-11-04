@@ -1,6 +1,6 @@
 import React from 'react';
 import NextContainer from '../containers/NextContainer';
-import CategorySelectorContainer from '../containers/CategorySelectorContainer';
+import DifficultyContainer from '../containers/DifficultyContainer';
 // import TimerContainer from '../containers/TimerContainer';
 // import Timer from '../components/Timer';
 import QuestionContainer from '../containers/QuestionContainer';
@@ -13,7 +13,7 @@ class App extends React.Component {
       <main>
         <h1>Quiz Machine</h1>
         <NextContainer />
-        <CategorySelectorContainer />
+        <DifficultyContainer />
         {/* <TimerContainer /> */}
         {/* <Timer /> */}
         <QuestionContainer />

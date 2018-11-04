@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         nextQuestion: () => dispatch(nextQuestion()),
-        fetchQuestion: (category) => dispatch(fetchQuestion(category))
+        fetchQuestion: (difficulty) => dispatch(fetchQuestion(difficulty))
     }
 }
 

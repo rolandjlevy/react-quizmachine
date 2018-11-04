@@ -7,14 +7,14 @@ const mapStateToProps = state => {
     console.log(`mapStateToProps > state: `, state)
     return {
         question: state.question.question,
-        category: state.categorySelector
+        difficulty: state.difficulty
     }
 }
 
 const mapDispatchToProps = dispatch => {
     // console.log(`Step 2: getting action creator`)
     return {
-        fetchQuestion: (category) => dispatch(fetchQuestion(category)),
+        fetchQuestion: (difficulty) => dispatch(fetchQuestion(difficulty)),
         receiveAnswer: (answer, question) => dispatch(receiveAnswer(answer, question))
     }
 }
