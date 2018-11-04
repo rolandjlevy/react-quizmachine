@@ -1,7 +1,9 @@
-export function fetchQuestion() {
+export function fetchQuestion(category) {
   // console.log(`Step 3: calling fetch`)
   return function(dispatch) {
-    fetch(`https://opentdb.com/api.php?amount=1&type=multiple`)
+    const url = `https://opentdb.com/api.php?amount=1&difficulty=${category}&type=multiple`;
+    console.log(url);
+    fetch(url)
       .then(response => response.json())
       .then(result => {
         dispatch(receiveQuestion(result.results[0]));
@@ -48,6 +50,13 @@ export function startTimer(max) {
     type: 'START_TIMER',
     max
   };
+}
+
+export function setCategory(category) {
+  return{
+      type: "SET_CATEGORY",
+      category
+  }
 }
 
 // function runTimer (timer) {

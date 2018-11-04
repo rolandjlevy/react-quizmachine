@@ -8,7 +8,7 @@ class Question extends React.Component {
     }
     componentDidMount () {
         // console.log(`Step 1: calling fetchQuestion`);
-        this.props.fetchQuestion();
+        this.props.fetchQuestion(this.props.category);
     }
 
     render () {
@@ -30,7 +30,7 @@ class Question extends React.Component {
                                     onClick={(event) => {
                                         event.preventDefault();
                                         this.props.receiveAnswer(answer, questionObject);
-                                        this.props.fetchQuestion();
+                                        this.props.fetchQuestion(this.props.category);
                                     }}
                                 >
                                     {decode(answer)}

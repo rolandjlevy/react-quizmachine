@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Next({ currentQuestion, nextQuestion, fetchQuestion }) {
+function Next({ currentQuestion, nextQuestion, fetchQuestion, category }) {
     const nextButton = 
     (<button onClick={() => {
         nextQuestion();
-        fetchQuestion();
+        fetchQuestion(category);
         }}>
         Next question &raquo;
     </button>)
