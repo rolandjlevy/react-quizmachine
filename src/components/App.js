@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <header className="header">
-          <h1>Quiz Machine</h1>
+          <h1>Quiz Machine <i className="far fa-question-circle fa-1x"/></h1>
         </header>
         <nav className="nav">
           <ul className="nav__info">

@@ -1,15 +1,3 @@
-// import React from 'react';
-
-// function Timer({ currentTime }) {
-//     return(
-//         <div>
-//             <p>Time: {currentTime}</p>
-//         </div>
-//     )
-// }
-
-// export default Timer;
-
 import React from 'react';
 
 class Timer extends React.Component {
@@ -20,6 +8,10 @@ class Timer extends React.Component {
 
     componentDidMount () {
         this.startTimer();
+    }
+
+    componentDidUnMount () {
+        clearInterval(this.timerCall);
     }
       
     startTimer () {
@@ -44,3 +36,15 @@ class Timer extends React.Component {
 };
 
 export default Timer;
+
+// import React from 'react';
+
+// function Timer({ currentTime }) {
+//     return(
+//         <div>
+//             <p>Time: {currentTime}</p>
+//         </div>
+//     )
+// }
+
+// export default Timer;
