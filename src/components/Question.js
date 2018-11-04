@@ -2,13 +2,31 @@ import React from 'react';
 import { decode } from "he";
 
 class Question extends React.Component { 
-    constructor() {
-        super()
-    }
 
+    constructor(props) {
+        super(props);
+        this.state = { timer: 5 };
+    }
     componentDidMount () {
         // console.log(`Step 1: calling fetchQuestion`);
         this.props.fetchQuestion();
+    }
+
+    decrementClock () {
+        if (this.state.timer > 0) {    
+            this.setState((prevstate) => ({ timer: prevstate.timer-1 }));
+        }
+    };
+
+    loadNextQuestion () {
+        setTimeout(() => this.props.fetchQuestion(), 5000);
+        // this.setState({timer: 5});
+        this.clockCall = setInterval(() => {
+          this.decrementClock();
+        }, 1000);
+    }
+    componentWillUnmount() {
+        clearInterval(this.clockCall);
     }
 
     render () {
@@ -17,16 +35,17 @@ class Question extends React.Component {
             !!questionObject &&
             (<article>
                 <div>
-                    Question: {decode(questionObject.question)}
+                {this.state.timer}{" "}{decode(questionObject.question)}
                 </div>
                 <ul className="answers">
-                    Answers: {questionObject.answersArray.map(answer => {
+                    {questionObject.answersArray.map(answer => {
                         return  <li 
                                     className="answers__option" 
                                     key={answer}
                                     onClick={(event) => {
                                         event.preventDefault();
                                         this.props.receiveAnswer(answer, questionObject);
+                                        this.loadNextQuestion();
                                     }}
                                 >
                                     {decode(answer)}

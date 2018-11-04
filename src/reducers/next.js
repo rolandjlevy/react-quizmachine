@@ -2,7 +2,7 @@ function next(state = {
     currentQuestion: 1 
 }, action){
     switch (action.type) {
-      case 'NEXT_QUESTION':
+      case 'RECEIVE_QUESTION': // NEXT_QUESTION
         return {
           currentQuestion: state.currentQuestion + 1
         }

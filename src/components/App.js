@@ -9,9 +9,9 @@ class App extends React.Component {
     return (
       <main>
         <h1>Quiz questions</h1>
+        <NextContainer />
         <QuestionContainer />
         <ScoreContainer />
-        <NextContainer />
       </main>
     )
   }

@@ -3,13 +3,13 @@ import React from 'react';
 function Next({ currentQuestion, nextQuestion, fetchQuestion }) {
     return(
         <div>
-            <p>Current question: {currentQuestion} </p>
+            <p>Question: {currentQuestion}
             <button onClick={() => {
                 nextQuestion();
                 fetchQuestion();
                 }}>
                 Next question &raquo;
-            </button>
+            </button> </p>
         </div>
     )
 }
