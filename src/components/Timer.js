@@ -11,32 +11,33 @@
 // export default Timer;
 
 import React from 'react';
+
 class Timer extends React.Component {
-    constructor () {
-        super()
-        this.state = {
-            elapsed: 0
-        }
+    constructor(props) {
+        super(props);
+        this.state = { timer: 30 };
+    }
+      
+    startTimer () {
+        this.timerCall = setInterval(() => {
+            this.runTimer();
+        }, 1000);
+    }
+      
+    runTimer () {  
+        if (this.state.timer === 0) clearInterval(this.timerCall)
+        this.setState((prevstate) => ({ timer: prevstate.timer-1 }));
+    };
+      
+    componentWillUnmount() {
+        clearInterval(this.timerCall);
     }
 
-    componentDidMount (){
-        this.timer = setInterval(this.tick, 50);
-    }
-
-    componentWillUnmount (){
-        clearInterval(this.timer);
-    }
-
-    tick(){
-        this.setState({elapsed: new Date() - this.props.start});
-    }
-
-    render() {
-        const elapsed = Math.round(this.state.elapsed / 100);
-        const seconds = (elapsed / 10).toFixed(1);    
+    render() {  
         return (
             <div>
-                Time: {seconds}
+                <button onClick={this.startTimer}>Start</button>
+                 {this.state.timer === 0 ? 'Times Up!' : this.state.timer }
             </div>
         )
     }
