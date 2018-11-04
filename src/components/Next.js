@@ -6,11 +6,11 @@ function Next({ currentQuestion, nextQuestion, fetchQuestion, difficulty }) {
         nextQuestion();
         fetchQuestion(difficulty);
         }}>
-        Next question &raquo;
+        Next question &#187;
     </button>)
     return(
         <div>
-            Question: {currentQuestion}
+            Q:{currentQuestion}
         </div>
     )
 }

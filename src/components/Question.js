@@ -16,12 +16,9 @@ class Question extends React.Component {
         return (
             !!questionObject &&
             (<article>
-                <div>
-                    Difficulty: {questionObject.difficulty}
-                </div>
-                <div>
+                <h2>
                     {decode(questionObject.question)}
-                </div>
+                </h2>
                 <ul className="answers">
                     {questionObject.answersArray.map(answer => {
                         return  <li 

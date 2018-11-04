@@ -15,45 +15,30 @@ import React from 'react';
 class Timer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            timer: 10,
-            status: "Ready..."
-        };
+        this.state = { timer: 10 };
     }
 
     componentDidMount () {
         this.startTimer();
     }
       
-    componentWillUnmount() {
-        clearInterval(this.timerCall);
-    }
-      
     startTimer () {
-        this.timerCall = setInterval(() => {
-            this.runTimer();
-        }, 1000);
+        this.timerCall = setInterval(() => { this.runTimer() }, 1000);
     }
 
     runTimer () {
         if (this.state.timer > 1) {    
-            this.setState(prevstate => ({ 
-                timer: prevstate.timer - 1,
-                status: ""
-            }));
+            this.setState(prevstate => ({ timer: prevstate.timer - 1 }));
         } else {
-            this.setState({
-                timer: 10,
-                status: "Time up! Next question..."
-            });
+            this.setState({ timer: 10 });
         }
     };
 
     render() {  
         return (
-            <h2>
-                 Time: {this.state.timer}  {this.state.status}
-            </h2>
+            <div>
+                 Time: {this.state.timer}
+            </div>
         )
     }
 };

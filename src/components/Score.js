@@ -1,4 +1,5 @@
 import React from 'react';
+import { decode } from "he";
 
 function Score({ points, result }) {
     return(
@@ -9,7 +10,7 @@ function Score({ points, result }) {
             result.map((item, index) => {
                 const status = item.correct === 'YES' ? 'Correct' : 'Wrong'
                 return  <li key={item.question}>
-                            Question {index+1}: {item.answer} => {status} answer
+                            Question {index+1}: {decode(item.answer)} => {status} answer
                         </li>
             })}
             </ul>

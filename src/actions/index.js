@@ -1,7 +1,7 @@
 export function fetchQuestion(difficulty) {
   // console.log(`Step 3: calling fetch`)
   return function(dispatch) {
-    const url = `https://opentdb.com/api.php?amount=1&difficulty=${difficulty}&type=multiple`;
+    const url = `https://opentdb.com/api.php?amount=1&difficulty=${difficulty.toLowerCase()}&type=multiple`;
     console.log(url);
     fetch(url)
       .then(response => response.json())
