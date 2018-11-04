@@ -49,10 +49,11 @@
   
   .answers {
     margin: 0;
+    padding: 0;
     &__option {
       cursor: pointer;
       padding: 1rem;
-      margin: 0.2rem;
+      margin: 0.2rem 0;
       background:#efefef;
       list-style: none;
       &:hover {

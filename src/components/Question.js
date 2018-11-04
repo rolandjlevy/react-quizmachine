@@ -16,9 +16,6 @@ class Question extends React.Component {
         return (
             !!questionObject &&
             (<article>
-                <h2>
-                    {/* {this.state.timer} */}
-                </h2>
                 <div>
                 {decode(questionObject.question)}
                 </div>
