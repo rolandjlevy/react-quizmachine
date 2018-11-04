@@ -1,7 +1,9 @@
 import React from 'react';
+import NextContainer from '../containers/NextContainer';
+// import TimerContainer from '../containers/TimerContainer';
+import Timer from '../components/Timer';
 import QuestionContainer from '../containers/QuestionContainer';
 import ScoreContainer from '../containers/ScoreContainer';
-import NextContainer from '../containers/NextContainer';
 import "../styles/App.scss";
 
 class App extends React.Component {
@@ -10,6 +12,8 @@ class App extends React.Component {
       <main>
         <h1>Quiz Machine</h1>
         <NextContainer />
+        {/* <TimerContainer /> */}
+        <Timer start={Date.now()} />
         <QuestionContainer />
         <ScoreContainer />
       </main>

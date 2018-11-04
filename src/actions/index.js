@@ -42,3 +42,23 @@ export function nextQuestion() {
     type: 'NEXT_QUESTION'
   };
 }
+
+export function startTimer(max) {
+  return {
+    type: 'START_TIMER',
+    max
+  };
+}
+
+// function runTimer (timer) {
+//   if (timer > 1) {    
+
+//   } else {
+//       this.setState({timer: "Done"});
+//       clearInterval(timerCall);
+//   }
+// };
+
+// function stopTimer () {
+//   timerCall = setInterval(() => { runTimer()}, 1000);
+// }
