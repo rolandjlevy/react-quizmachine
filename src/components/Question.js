@@ -13,20 +13,18 @@ class Question extends React.Component {
     }
 
     decrementClock () {
-        if (this.state.timer > 0) {    
-            this.setState((prevstate) => ({ timer: prevstate.timer-1 }));
+        if (this.state.timer > 1) {    
+            this.setState(prevstate => ({ timer: prevstate.timer - 1 }));
+        } else {
+            this.setState({timer: "Done"});
+            clearInterval(this.clockCall);
+            this.props.fetchQuestion()
         }
     };
 
     loadNextQuestion () {
-        setTimeout(() => this.props.fetchQuestion(), 5000);
-        // this.setState({timer: 5});
-        this.clockCall = setInterval(() => {
-          this.decrementClock();
-        }, 1000);
-    }
-    componentWillUnmount() {
-        clearInterval(this.clockCall);
+        this.setState({timer: 5});
+        this.clockCall = setInterval(() => { this.decrementClock()}, 1000);
     }
 
     render () {
@@ -34,8 +32,11 @@ class Question extends React.Component {
         return (
             !!questionObject &&
             (<article>
+                <h2>
+                    {this.state.timer}
+                </h2>
                 <div>
-                {this.state.timer}{" "}{decode(questionObject.question)}
+                {decode(questionObject.question)}
                 </div>
                 <ul className="answers">
                     {questionObject.answersArray.map(answer => {
