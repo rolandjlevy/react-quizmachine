@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
-import questionsReceivedReducer from './questionsReceivedReducer';
-import scoresReducer from './scoresReducer';
-import nextQuestionReducer from './nextQuestionReducer';
-import scoreDisplayedReducer from './scoreDisplayedReducer';
+import question from './question';
+import score from './score';
+import next from './next';
 
 export default combineReducers({
-  questionsReceivedReducer,
-  scoresReducer,
-  nextQuestionReducer,
-  scoreDisplayedReducer
+  question,
+  score,
+  next
 });

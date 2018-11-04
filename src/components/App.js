@@ -1,18 +1,17 @@
 import React from 'react';
-import PaginationContainer from '../containers/PaginationContainer';
-import ScoreDisplayContainer from '../containers/ScoreDisplayContainer';
-import QuestionsContainer from '../containers/QuestionsContainer';
+import QuestionContainer from '../containers/QuestionContainer';
+import ScoreContainer from '../containers/ScoreContainer';
+import NextContainer from '../containers/NextContainer';
 import "../styles/App.scss";
 
 class App extends React.Component {
-
   render(){
     return (
       <main>
         <h1>Quiz questions</h1>
-        <PaginationContainer />
-        <ScoreDisplayContainer />
-        <QuestionsContainer />
+        <QuestionContainer />
+        <ScoreContainer />
+        <NextContainer />
       </main>
     )
   }
