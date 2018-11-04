@@ -10,7 +10,7 @@ function Next({ currentQuestion, nextQuestion, fetchQuestion }) {
     </button>)
     return(
         <div>
-            <p>Question: {currentQuestion}</p>
+            Question: {currentQuestion}
         </div>
     )
 }

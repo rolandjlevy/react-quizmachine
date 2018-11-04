@@ -17,7 +17,10 @@ class Question extends React.Component {
             !!questionObject &&
             (<article>
                 <div>
-                {decode(questionObject.question)}
+                    Difficulty: {questionObject.difficulty}
+                </div>
+                <div>
+                    {decode(questionObject.question)}
                 </div>
                 <ul className="answers">
                     {questionObject.answersArray.map(answer => {
@@ -27,6 +30,7 @@ class Question extends React.Component {
                                     onClick={(event) => {
                                         event.preventDefault();
                                         this.props.receiveAnswer(answer, questionObject);
+                                        this.props.fetchQuestion();
                                     }}
                                 >
                                     {decode(answer)}
