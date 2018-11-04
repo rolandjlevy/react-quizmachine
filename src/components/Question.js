@@ -5,7 +5,7 @@ class Question extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { timer: 5 };
+        this.state = { timer: "Ready..." };
     }
     componentDidMount () {
         // console.log(`Step 1: calling fetchQuestion`);

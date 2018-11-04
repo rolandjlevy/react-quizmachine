@@ -8,7 +8,7 @@ class App extends React.Component {
   render(){
     return (
       <main>
-        <h1>Quiz questions</h1>
+        <h1>Quiz Machine</h1>
         <NextContainer />
         <QuestionContainer />
         <ScoreContainer />
