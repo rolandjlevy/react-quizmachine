@@ -1,17 +1,20 @@
 import Timer from '../components/Timer';
-import { startTimer, runTimer } from '../actions';
+import { startTimer, runTimer, resetTimer, fetchQuestion } from '../actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-        currentTime: state.timer.currentTime
+        timer: state.timer.timer,
+        difficulty: state.difficulty
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        startTimer: (max) => dispatch(startTimer(max)),
-        runTimer: () => dispatch(runTimer())
+        startTimer: () => dispatch(startTimer()),
+        runTimer: () => dispatch(runTimer()),
+        resetTimer: () => dispatch(resetTimer()),
+        fetchQuestion: (difficulty) => dispatch(fetchQuestion(difficulty))
     }
 }
 

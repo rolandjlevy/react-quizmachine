@@ -26,6 +26,7 @@
     padding: 0;
     margin: 0;
     height: 100vh;
+    background-color: #f7f5fc;
   }
   
   h1 {
@@ -52,7 +53,14 @@
   }
 
   select {
-    background-color: #fff;
+    border: 1px solid #a09cac;
+    background-color: #e8e5f0;
+  }
+
+  .score {
+    height: 30vh;
+    overflow: auto;
+    font-size: 1.2rem;
   }
   
   .answers { // ul
@@ -61,12 +69,16 @@
     &__option {
       cursor: pointer;
       padding: 0.7rem;
-      margin: 0.5rem 0;
-      background:#f2f0f7;
+      margin: 1rem 0;
+      background:#fff;
       list-style: none;
       border-radius: 0.3rem;
+      -webkit-filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.1));
+      filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.1));
       &:hover {
-        background:#e8e5f0;
+        background:#ffd258;
+        -webkit-filter: drop-shadow(0 0.7rem 0.3rem rgba(0,0,0,0.2));
+        filter: drop-shadow(0 0.7rem 0.3rem rgba(0,0,0,0.2));
       }
     }
   }
@@ -78,13 +90,14 @@
   }
 
   .main {
+    background-color: #f7f5fc;
     margin: 0;
     padding: 1rem;
   }
 
   .nav {
     &__info { // ul
-      background-color: #f2f0f7;
+      background-color: #e8e5f0;
       margin: 0;
       padding: 1rem;
       display: flex;

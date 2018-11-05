@@ -1,50 +1,29 @@
 import React from 'react';
 
-class Timer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { timer: 10 };
+class Timer extends React.Component{ 
+    constructor() {
+        super()
     }
 
-    componentDidMount () {
-        this.startTimer();
+    componentDidMount() {
+        this.timerCall = setInterval(() => { this.props.runTimer(10) }, 1000);
     }
 
-    componentDidUnMount () {
-        clearInterval(this.timerCall);
-    }
-      
-    startTimer () {
-        this.timerCall = setInterval(() => { this.runTimer() }, 1000);
-    }
-
-    runTimer () {
-        if (this.state.timer > 1) {    
-            this.setState(prevstate => ({ timer: prevstate.timer - 1 }));
-        } else {
-            this.setState({ timer: 10 });
+    componentWillUpdate () {
+        if (this.props.timer === 1) {
+            this.props.fetchQuestion(this.props.difficulty);
+            clearInterval(this.timerCall);
+            this.timerCall = setInterval(() => { this.props.runTimer(10) }, 1000);
         }
-    };
+    }
 
-    render() {  
-        return (
+    render () {
+        return(
             <div>
-                 Time: {this.state.timer}
+                Time: {this.props.timer}
             </div>
         )
     }
-};
+}
 
 export default Timer;
-
-// import React from 'react';
-
-// function Timer({ currentTime }) {
-//     return(
-//         <div>
-//             <p>Time: {currentTime}</p>
-//         </div>
-//     )
-// }
-
-// export default Timer;

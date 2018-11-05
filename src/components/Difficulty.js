@@ -3,7 +3,7 @@ import React from "react";
 function Difficulty({ setDifficulty }) {
   return (
     <React.Fragment>
-      Difficulty: 
+      Level: 
       <select onChange={(event) => setDifficulty(event.target.value)}>
         {["Easy", "Medium", "Hard"].map(item => {
             return <option 

@@ -1,10 +1,8 @@
 import { connect } from 'react-redux';
 import Question from '../components/Question';
-import { fetchQuestion, receiveAnswer } from '../actions';
+import { fetchQuestion, receiveAnswer, startTimer } from '../actions';
 
 const mapStateToProps = state => {
-    // console.log(`Step 6 - calling mapStateToProps`)
-    console.log(`mapStateToProps > state: `, state)
     return {
         question: state.question.question,
         difficulty: state.difficulty
@@ -12,10 +10,10 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    // console.log(`Step 2: getting action creator`)
     return {
         fetchQuestion: (difficulty) => dispatch(fetchQuestion(difficulty)),
-        receiveAnswer: (answer, question) => dispatch(receiveAnswer(answer, question))
+        receiveAnswer: (answer, question) => dispatch(receiveAnswer(answer, question)),
+        startTimer: () => dispatch(startTimer())
     }
 }
 

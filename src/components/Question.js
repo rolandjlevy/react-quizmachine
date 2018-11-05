@@ -7,7 +7,6 @@ class Question extends React.Component {
         super(props);
     }
     componentDidMount () {
-        // console.log(`Step 1: calling fetchQuestion`);
         this.props.fetchQuestion(this.props.difficulty);
     }
 

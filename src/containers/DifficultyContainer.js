@@ -3,7 +3,6 @@ import Difficulty from "../components/Difficulty";
 import { setDifficulty } from "../actions";
 
 const mapStateToProps = state => {
-    // console.log(`mapStateToProps: `, state)
     return {
         difficulty: state.difficulty
     }

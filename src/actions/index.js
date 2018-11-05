@@ -1,24 +1,24 @@
 export function fetchQuestion(difficulty) {
-  // console.log(`Step 3: calling fetch`)
   return function(dispatch) {
+    dispatch(resetTimer());
     const url = `https://opentdb.com/api.php?amount=1&difficulty=${difficulty.toLowerCase()}&type=multiple`;
     console.log(url);
     fetch(url)
       .then(response => response.json())
       .then(result => {
         dispatch(receiveQuestion(result.results[0]));
+        dispatch(startTimer());
       })
       .catch(error => console.log(error));
   };
 }
 
 export function receiveQuestion(question) {
-  // console.log(`Step 4 - creating RECEIVE_QUESTION`, question.answersArray)
   question.answersArray = shuffle(
     [...question.incorrect_answers, question.correct_answer]
   ); 
   return {
-    type: "RECEIVE_QUESTION",
+    type: 'RECEIVE_QUESTION',
     question
   };
 }
@@ -45,29 +45,31 @@ export function nextQuestion() {
   };
 }
 
-export function startTimer(max) {
+export function setDifficulty(difficulty) {
+  return{
+      type: "SET_CATEGORY",
+      difficulty
+  };
+}
+
+const max = 10;
+
+export function startTimer () {
   return {
     type: 'START_TIMER',
     max
   };
 }
 
-export function setDifficulty(difficulty) {
-  return{
-      type: "SET_CATEGORY",
-      difficulty
-  }
+export function runTimer () {
+  return {
+    type: 'RUN_TIMER',
+    max
+  };
 }
 
-// function runTimer (timer) {
-//   if (timer > 1) {    
-
-//   } else {
-//       this.setState({timer: "Done"});
-//       clearInterval(timerCall);
-//   }
-// };
-
-// function stopTimer () {
-//   timerCall = setInterval(() => { runTimer()}, 1000);
-// }
+export function resetTimer () {
+  return {
+    type: 'RESET_TIMER'
+  };
+}
