@@ -1,4 +1,4 @@
-function timer(state = { timer: 10 }, action) {
+function timer(state = { timer: 5 }, action) {
     switch (action.type) {
         case 'RESET_TIMER':
         return { timer: "..." }

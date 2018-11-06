@@ -31,7 +31,7 @@ function shuffle(answers) {
 }
 
 export function receiveAnswer(answer, question) {
-  const answerType = (answer === question.correct_answer) ? 'CORRECT_ANSWER' : 'INCORRECT_ANSWER';
+  const answerType = answer === 'PASS' ? 'PASS' : (answer === question.correct_answer ? 'CORRECT_ANSWER' : 'INCORRECT_ANSWER');
   return {
     type: answerType,
     answer,
@@ -52,7 +52,7 @@ export function setDifficulty(difficulty) {
   };
 }
 
-const max = 10;
+// const max = 10;
 
 export function startTimer () {
   return {
@@ -61,7 +61,7 @@ export function startTimer () {
   };
 }
 
-export function runTimer () {
+export function runTimer (max) {
   return {
     type: 'RUN_TIMER',
     max

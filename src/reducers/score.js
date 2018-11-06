@@ -6,6 +6,11 @@ function score (state = {
     const question = !!action.question ? action.question.question : null;
     const result = [...state.result, { question, answer: action.answer, correct}];
     switch (action.type) {
+        case 'PASS':
+            return {
+                points: state.points,
+                result: [...state.result, { question, answer: 'No answer given', correct: 'PASS'}]
+            }
         case 'CORRECT_ANSWER':
             return {
                 points: state.points + 1,
@@ -13,7 +18,7 @@ function score (state = {
             }
         case 'INCORRECT_ANSWER':
             return {
-               points: state.points,
+                points: state.points,
                result
             } 
         default:
