@@ -1,6 +1,6 @@
 function difficulty(state = "easy", action) {
     switch (action.type){
-        case "SET_CATEGORY":
+        case 'SET_DIFFICULTY':
             return action.difficulty
         default:
             return state

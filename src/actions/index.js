@@ -47,12 +47,10 @@ export function nextQuestion() {
 
 export function setDifficulty(difficulty) {
   return{
-      type: "SET_CATEGORY",
+      type: "SET_DIFFICULTY",
       difficulty
   };
 }
-
-// const max = 10;
 
 export function startTimer () {
   return {
