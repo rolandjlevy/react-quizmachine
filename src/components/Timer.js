@@ -11,6 +11,7 @@ class Timer extends React.Component{
 
     componentWillUpdate () {
         if (this.props.timer === 1) {
+            // this.props.receiveAnswer('PASS', this.props.question);
             this.props.fetchQuestion(this.props.difficulty);
             clearInterval(this.timerCall);
             this.timerCall = setInterval(() => { this.props.runTimer(10) }, 1000);

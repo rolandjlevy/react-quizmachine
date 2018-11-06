@@ -6,19 +6,20 @@ function Score({ points, result }) {
     return(
         <div>
             <p>Score: {points} </p>
-            <ul className="score">
-            {result &&
-            result.map((item, index) => {
-                const status = item.correct === 'YES' ? 'Correct' : 'Wrong'
-                return  <li key={item.question}>
-                            <strong>Question {index+1}: {status} answer</strong><br />
-                            - Q: "{decode(item.question)}" <br />
-                            - A: "{decode(item.answer)}"
-                            {/* <span className={getClassName}>{decode(item.answer)}</span> */}
-                            {/* <button onClick="#">[+]</button> */}
-                        </li>
-            })}
-            </ul>
+            <div className="score">
+                <ul className="score__items">
+                {result &&
+                result.map((item, index) => {
+                    const status = item.correct === 'YES' ? 'Correct answer!' : 'Wrong answer';
+                    const iconStyle = item.correct === 'YES' ? 'score__item-correct' : 'score__item-incorrect';
+                    return  <li className={iconStyle} key={item.question}>
+                                <strong>Question {index+1}: {status}</strong><br />
+                                &bull; Q: "{decode(item.question)}" <br />
+                                &bull; A: "{decode(item.answer)}"
+                            </li>
+                })}
+                </ul>
+            </div>
         </div>
     )
 }
